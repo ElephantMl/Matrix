@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Generator;
+namespace Elephant\Matrix\Tests\Unit\Generator;
 
 use Elephant\Matrix\Generator\Generator;
 use PHPUnit\Framework\TestCase;
