@@ -69,4 +69,19 @@ class Matrix
 
         return new self($product);
     }
+
+    public function transpose(): self
+    {
+        $return = [];
+        $array = $this->matrix;
+        foreach ($array as $key => $value) {
+            if (!is_array($value)) {
+                return new self($array);
+            }
+            foreach ($value as $key2 => $value2) {
+                $return[$key2][$key] = $value2;
+            }
+        }
+        return new self($return);
+    }
 }

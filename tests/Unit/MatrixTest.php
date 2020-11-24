@@ -37,4 +37,22 @@ class MatrixTest extends TestCase
             $matrix->dot($matrix2)->toArray()
         );
     }
+
+    public function testTranspose(): void
+    {
+        $matrix = new Matrix(
+            [
+                [1, 2],
+                [3, 4],
+            ]
+        );
+
+        self::assertEquals(
+            [
+                [1, 3],
+                [2, 4]
+            ],
+            $matrix->transpose()->toArray()
+        );
+    }
 }
