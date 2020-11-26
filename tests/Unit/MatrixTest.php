@@ -55,4 +55,68 @@ class MatrixTest extends TestCase
             $matrix->transpose()->toArray()
         );
     }
+
+    public function testDeleteRow(): void
+    {
+        $matrix = new Matrix(
+            [
+                [1,2,3,4],
+                [5,6,7,8],
+                [9,10,11,12],
+                [13,14,15,16],
+            ]
+        );
+
+        self::assertEquals(
+            [
+                [5,6,7,8],
+                [9,10,11,12],
+                [13,14,15,16],
+            ],
+            $matrix->deleteRow(0)->toArray()
+        );
+    }
+
+    public function testDeleteColumn(): void
+    {
+        $matrix = new Matrix(
+            [
+                [1,2,3,4],
+                [5,6,7,8],
+                [9,10,11,12],
+                [13,14,15,16],
+            ]
+        );
+
+        self::assertEquals(
+            [
+                [2,3,4],
+                [6,7,8],
+                [10,11,12],
+                [14,15,16],
+            ],
+            $matrix->deleteColumn(0)->toArray()
+        );
+    }
+
+    public function testMinorMatrix(): void
+    {
+        $matrix = new Matrix(
+            [
+                [1,2,3,4],
+                [5,6,7,8],
+                [9,10,11,12],
+                [13,14,15,16],
+            ]
+        );
+
+        self::assertEquals(
+            [
+                [6,7,8],
+                [10,11,12],
+                [14,15,16],
+            ],
+            $matrix->minorMatrix(0, 0)->toArray()
+        );
+    }
 }

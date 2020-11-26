@@ -84,4 +84,43 @@ class Matrix
         }
         return new self($return);
     }
+
+    public function minorMatrix($m, $n): self
+    {
+        return $this->deleteRow($m)->deleteColumn($n);
+    }
+
+    public function deleteColumn(int $n): self
+    {
+        $matrix = [];
+
+        for ($i = 0; $i < $this->rows; $i++) {
+            for ($j = 0; $j < $this->columns; $j++) {
+                if ($j === $n) {
+                    continue;
+                }
+                $matrix[$i][$j] = $this->matrix[$i][$j];
+            }
+        }
+
+        for ($i = 0; $i < $this->rows; $i++) {
+            $matrix[$i] = array_values($matrix[$i]);
+        }
+
+        return new self($matrix);
+    }
+
+    public function deleteRow(int $m): self
+    {
+        $matrix = [];
+
+        for ($i = 0; $i < $this->rows; $i++) {
+            if ($i === $m) {
+                continue;
+            }
+            $matrix[$i] = $this->matrix[$i];
+        }
+
+        return new self(array_values($matrix));
+    }
 }
